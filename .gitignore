@@ -14,3 +14,5 @@ main.js.before-updates.js
 Thumbs.db
 
 main.js.spideyweb-backup
+main.js.broken_*.js
+*.bak
