@@ -1,0 +1,1517 @@
+﻿:root {
+    --bg: #09050f;
+    --panel: #12091d;
+    --purple: #9b4dff;
+    --pink: #ff3fa4;
+    --text: #f4efff;
+    --muted: #9e92af;
+    --border: rgba(185, 98, 255, 0.22);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at 80% 0%, #241033 0%, var(--bg) 45%);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow: hidden;
+}
+
+.app-shell {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 270px;
+    min-width: 270px;
+    background: rgba(13, 7, 22, .97);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: .25s;
+}
+
+.sidebar.collapsed {
+    width: 72px;
+    min-width: 72px;
+}
+
+.brand {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.brand-mark {
+    min-width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    border-radius: 10px;
+}
+
+.brand-name {
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.navigation {
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 10px;
+}
+
+.nav-item {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    text-align: left;
+    padding: 13px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: white;
+    background: linear-gradient(90deg, rgba(155,77,255,.25), rgba(255,63,164,.08));
+}
+
+.sidebar.collapsed .brand-name,
+.sidebar.collapsed .nav-item span {
+    display: none;
+}
+
+.sidebar.collapsed .nav-item {
+    text-align: center;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    border-bottom: 1px solid var(--border);
+}
+
+.icon-button {
+    width: 42px;
+    height: 38px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.system-status {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--purple);
+    box-shadow: 0 0 12px var(--purple);
+}
+
+.content {
+    flex: 1;
+    overflow: auto;
+    padding: 55px;
+}
+
+.hero {
+    max-width: 950px;
+    margin: 60px auto;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 70px);
+    margin: 0;
+    background: linear-gradient(90deg, #fff, var(--purple), var(--pink));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.tagline {
+    color: var(--pink);
+    letter-spacing: 3px;
+    margin-top: 15px;
+}
+
+.hero p,
+.page-subtitle {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.card,
+.coming,
+.unavailable {
+    background: rgba(18, 9, 29, .9);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.page-title {
+    font-size: 38px;
+}
+
+.coming {
+    margin-top: 30px;
+}
+
+.unavailable {
+    max-width: 650px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.unavailable h2 {
+    color: var(--pink);
+}
+
+/* ================================
+   VOID//X CHAT MODULE
+================================ */
+
+.chat-page {
+    max-width: 1100px;
+    height: calc(100vh - 175px);
+    min-height: 550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.chat-header .page-title {
+    margin: 0 0 8px 0;
+}
+
+.chat-online {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.chat-row {
+    display: flex;
+    width: 100%;
+}
+
+.chat-row.user {
+    justify-content: flex-end;
+}
+
+.chat-row.void {
+    justify-content: flex-start;
+}
+
+.chat-bubble {
+    max-width: 72%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    line-height: 1.5;
+    border: 1px solid var(--border);
+}
+
+.chat-row.user .chat-bubble {
+    background: linear-gradient(135deg, rgba(155,77,255,.85), rgba(255,63,164,.65));
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-row.void .chat-bubble {
+    background: rgba(18, 9, 29, .95);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+#chat-input {
+    flex: 1;
+    resize: none;
+    min-height: 54px;
+    max-height: 140px;
+    padding: 16px;
+    background: rgba(18, 9, 29, .95);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#chat-input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 15px rgba(155,77,255,.15);
+}
+
+#chat-send {
+    min-width: 100px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    transition: transform .15s;
+}
+
+#chat-send:hover {
+    transform: translateY(-1px);
+}
+
+/* ================================
+   VOID//X CHAT UPDATE 2
+================================ */
+
+.chat-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.chat-clear {
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(18, 9, 29, .95);
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .5px;
+}
+
+.chat-clear:hover {
+    color: var(--text);
+    border-color: var(--purple);
+}
+
+.chat-typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 13px 16px;
+    background: rgba(18, 9, 29, .95);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    animation: voidTyping 1.2s infinite;
+}
+
+.chat-typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.chat-typing span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.chat-typing small {
+    margin-left: 7px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+@keyframes voidTyping {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 700px) {
+    .chat-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .chat-header-actions {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .chat-bubble {
+        max-width: 85%;
+    }
+
+    #chat-send {
+        min-width: 75px;
+    }
+}
+
+
+/* ================================
+   VOID//X GAMES MODULE
+================================ */
+
+.games-page {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.games-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.games-header .page-title {
+    margin: 0 0 8px 0;
+}
+
+.games-count {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    padding-top: 12px;
+}
+
+.games-count span {
+    color: var(--purple);
+    font-weight: 800;
+}
+
+.games-library {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.game-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    min-height: 180px;
+    padding: 30px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(27, 13, 42, .98),
+            rgba(13, 7, 22, .98)
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--purple);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .3);
+}
+
+.featured-game::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -120px;
+    top: -140px;
+
+    background: radial-gradient(
+        circle,
+        rgba(155, 77, 255, .16),
+        transparent 70%
+    );
+
+    pointer-events: none;
+}
+
+.game-number {
+    font-size: 46px;
+    font-weight: 900;
+    color: rgba(155, 77, 255, .5);
+    letter-spacing: -2px;
+}
+
+.game-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.game-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--pink);
+    margin-bottom: 8px;
+}
+
+.game-info h2 {
+    margin: 0 0 10px;
+    font-size: 28px;
+}
+
+.game-info p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.game-meta {
+    display: flex;
+    gap: 18px;
+    margin-top: 20px;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+.game-actions {
+    position: relative;
+    z-index: 2;
+}
+
+.game-launch {
+    min-width: 130px;
+    padding: 15px 24px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--pink)
+    );
+
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+.game-launch:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(155, 77, 255, .25);
+}
+
+.games-empty {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 25px 30px;
+
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+
+    opacity: .75;
+}
+
+.empty-symbol {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    color: var(--purple);
+    font-size: 24px;
+}
+
+.games-empty h3 {
+    margin: 0 0 5px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.games-empty p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+    .game-card {
+        flex-wrap: wrap;
+    }
+
+    .game-actions {
+        width: 100%;
+    }
+
+    .game-launch {
+        width: 100%;
+    }
+
+    .games-header {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================
+   SPIDEYWEB_STYLES
+   ========================================= */
+
+.spidey-page {
+    width: 100%;
+    min-height: 100%;
+    color: #e8e8e8;
+}
+
+.spidey-lock-screen {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spidey-lock-box {
+    width: min(420px, 90%);
+    padding: 50px 40px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(10, 10, 14, .85);
+    box-shadow: 0 20px 80px rgba(0,0,0,.5);
+}
+
+.spidey-lock-spider {
+    font-size: 54px;
+    margin-bottom: 18px;
+    animation: spideyFloat 3s ease-in-out infinite;
+}
+
+.spidey-lock-title {
+    font-size: 30px;
+    letter-spacing: 8px;
+    font-weight: 700;
+}
+
+.spidey-lock-subtitle {
+    margin: 12px 0 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: .5;
+}
+
+.spidey-lock-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    background: #08080b;
+    border: 1px solid rgba(255,255,255,.15);
+    color: white;
+    text-align: center;
+    letter-spacing: 4px;
+    outline: none;
+}
+
+.spidey-lock-box button,
+.spidey-add-button {
+    margin-top: 14px;
+    padding: 13px 20px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.08);
+    color: white;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.spidey-lock-box button:hover,
+.spidey-add-button:hover {
+    background: rgba(255,255,255,.16);
+}
+
+.spidey-system {
+    width: 100%;
+}
+
+.spidey-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.spidey-header h1 {
+    margin: 4px 0 0;
+    letter-spacing: 6px;
+}
+
+.spidey-kicker {
+    font-size: 10px;
+    letter-spacing: 3px;
+    opacity: .5;
+}
+
+.spidey-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 18px;
+}
+
+.spidey-web-panel,
+.spidey-profile-panel {
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(10,10,14,.55);
+    min-height: 600px;
+}
+
+.spidey-panel-title {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: .7;
+}
+
+.spidey-canvas {
+    position: relative;
+    height: 560px;
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+}
+
+.spidey-web-lines {
+    position: absolute;
+    inset: 0;
+    opacity: .35;
+    background:
+        repeating-radial-gradient(
+            circle at center,
+            transparent 0,
+            transparent 48px,
+            rgba(255,255,255,.08) 49px,
+            transparent 51px
+        );
+}
+
+.spidey-web-lines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(30deg, transparent 49.8%, rgba(255,255,255,.07) 50%, transparent 50.2%),
+        linear-gradient(90deg, transparent 49.8%, rgba(255,255,255,.07) 50%, transparent 50.2%),
+        linear-gradient(150deg, transparent 49.8%, rgba(255,255,255,.07) 50%, transparent 50.2%);
+}
+
+.spidey-person-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    min-width: 110px;
+    padding: 10px 14px;
+
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 2px;
+
+    background: rgba(15,15,20,.92);
+    color: white;
+
+    cursor: pointer;
+    z-index: 3;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    transition: transform .2s, background .2s;
+}
+
+.spidey-person-node:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: rgba(255,255,255,.12);
+}
+
+.spidey-spider {
+    position: absolute;
+    z-index: 4;
+    font-size: 34px;
+    left: 48%;
+    top: 15%;
+
+    animation: spiderMove 12s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,.3));
+}
+
+.spidey-empty {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.spider-symbol {
+    font-size: 50px;
+    animation: spideyFloat 3s ease-in-out infinite;
+}
+
+.spidey-empty h2 {
+    margin: 15px 0 5px;
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+
+.spidey-empty p {
+    opacity: .5;
+    font-size: 13px;
+}
+
+.spidey-profile-panel {
+    padding-bottom: 20px;
+}
+
+.spidey-profile-empty {
+    padding: 35px 25px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 2px;
+    opacity: .4;
+}
+
+.spidey-profile-header {
+    padding: 25px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.spidey-profile-title {
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: .5;
+}
+
+.spidey-profile-header h2 {
+    margin: 8px 0 0;
+}
+
+.spidey-profile-section {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.spidey-profile-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: .5;
+}
+
+.spidey-profile-section p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+@keyframes spideyFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spiderMove {
+    0% {
+        left: 48%;
+        top: 15%;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        left: 72%;
+        top: 35%;
+    }
+
+    50% {
+        left: 42%;
+        top: 70%;
+        transform: rotate(180deg);
+    }
+
+    75% {
+        left: 18%;
+        top: 42%;
+    }
+
+    100% {
+        left: 48%;
+        top: 15%;
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 950px) {
+    .spidey-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .spidey-profile-panel {
+        min-height: 300px;
+    }
+}
+
+
+/* =========================================
+   SPIDEYWEB_REAL_SPIDER_UPGRADE
+   Real web + crawling spider
+   ========================================= */
+
+.spidey-canvas {
+    background:
+        radial-gradient(circle at center,
+            rgba(80,80,95,.10) 0%,
+            rgba(8,8,12,.15) 45%,
+            rgba(0,0,0,.45) 100%);
+}
+
+/* SVG-web vult het hele canvas */
+.spidey-real-web {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.spidey-real-web .web-thread {
+    fill: none;
+    stroke: rgba(210,220,235,.34);
+    stroke-width: 1.2;
+    filter: drop-shadow(0 0 2px rgba(220,230,255,.18));
+}
+
+.spidey-real-web .web-ring {
+    fill: none;
+    stroke: rgba(190,200,220,.20);
+    stroke-width: 1;
+}
+
+/* Kleine trilling in het web */
+.spidey-real-web {
+    animation: webBreathing 7s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes webBreathing {
+    0%, 100% {
+        transform: scale(1);
+        opacity: .82;
+    }
+
+    50% {
+        transform: scale(1.008);
+        opacity: 1;
+    }
+}
+
+
+/* ================================
+   REAL SPIDER
+   ================================ */
+
+.spidey-spider {
+    position: absolute;
+    z-index: 8;
+    width: 54px;
+    height: 54px;
+    pointer-events: none;
+
+    /* De spin volgt een route */
+    offset-path: path(
+        "M 80 90
+         C 260 80, 430 170, 520 290
+         C 610 410, 480 490, 300 430
+         C 140 380, 150 210, 330 150
+         C 470 105, 650 170, 720 310"
+    );
+
+    offset-rotate: auto;
+
+    animation:
+        spiderCrawlPath 18s linear infinite;
+}
+
+/* De oude emoji verbergen */
+.spidey-spider {
+    font-size: 0 !important;
+}
+
+
+/* Lichaam */
+.spidey-spider::before {
+    content: "";
+    position: absolute;
+
+    width: 20px;
+    height: 25px;
+
+    left: 18px;
+    top: 16px;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 38% 28%,
+            #555 0 5%,
+            #111 16%,
+            #030303 60%,
+            #000 100%
+        );
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.18),
+        0 4px 8px rgba(0,0,0,.8);
+
+    animation: spiderBodyPulse .55s ease-in-out infinite alternate;
+}
+
+
+/* Poten */
+.spidey-spider::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(25deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 2px 5px / 27px 18px no-repeat,
+
+        linear-gradient(-25deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 25px 5px / 27px 18px no-repeat,
+
+        linear-gradient(35deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 0 17px / 28px 18px no-repeat,
+
+        linear-gradient(-35deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 26px 17px / 28px 18px no-repeat,
+
+        linear-gradient(55deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 2px 29px / 27px 17px no-repeat,
+
+        linear-gradient(-55deg,
+            transparent 46%,
+            #111 47%,
+            #111 50%,
+            transparent 51%) 25px 29px / 27px 17px no-repeat;
+
+    animation: spiderLegs .38s steps(2) infinite;
+}
+
+
+@keyframes spiderCrawlPath {
+    0% {
+        offset-distance: 0%;
+    }
+
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes spiderBodyPulse {
+    from {
+        transform: translateY(0) scale(1);
+    }
+
+    to {
+        transform: translateY(-1px) scale(.96);
+    }
+}
+
+@keyframes spiderLegs {
+    0% {
+        transform: rotate(-3deg) translateY(1px);
+    }
+
+    100% {
+        transform: rotate(3deg) translateY(-1px);
+    }
+}
+
+
+/* Zorg dat personen boven het web liggen */
+.spidey-person-node {
+    z-index: 5;
+}
+
+
+/* Het oude achtergrond-web uitschakelen */
+.spidey-web-lines {
+    display: none !important;
+}
+
+
+/* ========================================
+   SPIDEYWEB REAL CONNECTION WEB
+   ======================================== */
+
+.spidey-real-web {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.web-thread {
+    stroke: rgba(230, 230, 255, 0.75);
+    stroke-width: 0.18;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,.35));
+}
+
+.spidey-web-center {
+    fill: rgba(255,255,255,.9);
+    filter: drop-shadow(0 0 6px rgba(255,255,255,.7));
+}
+
+.spidey-person-node {
+    z-index: 5;
+}
+
+.spidey-spider {
+    position: absolute;
+    z-index: 10;
+    font-size: 30px;
+    line-height: 1;
+    pointer-events: none;
+    will-change: left, top, transform;
+}
+
+/* ========================================
+   SPIDEYWEB WALKING SPIDER
+   ======================================== */
+
+.spidey-spider {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    z-index: 10;
+    pointer-events: none;
+    will-change: left, top, transform;
+}
+
+.spider-body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 25px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.spider-abdomen {
+    position: absolute;
+    width: 16px;
+    height: 19px;
+    left: 1px;
+    top: 7px;
+    border-radius: 50% 50% 48% 48%;
+    background: #111;
+    border: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 0 7px rgba(255,255,255,.12);
+}
+
+.spider-thorax {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    left: 3px;
+    top: 0;
+    border-radius: 50%;
+    background: #171717;
+    border: 1px solid rgba(255,255,255,.16);
+}
+
+.spider-leg {
+    position: absolute;
+    width: 19px;
+    height: 2px;
+    background: #202020;
+    border-radius: 10px;
+    transform-origin: 0 50%;
+    z-index: 1;
+}
+
+/* Linker poten */
+.leg-1 { left: 17px; top: 9px; transform: rotate(150deg); animation: spiderLegLeft 0.42s infinite alternate; }
+.leg-2 { left: 17px; top: 14px; transform: rotate(170deg); animation: spiderLegLeft 0.48s infinite alternate; }
+.leg-3 { left: 17px; top: 20px; transform: rotate(190deg); animation: spiderLegLeft 0.44s infinite alternate; }
+.leg-4 { left: 17px; top: 25px; transform: rotate(210deg); animation: spiderLegLeft 0.50s infinite alternate; }
+
+/* Rechter poten */
+.leg-5 { left: 21px; top: 9px; transform: rotate(30deg); animation: spiderLegRight 0.42s infinite alternate; }
+.leg-6 { left: 21px; top: 14px; transform: rotate(10deg); animation: spiderLegRight 0.48s infinite alternate; }
+.leg-7 { left: 21px; top: 20px; transform: rotate(-10deg); animation: spiderLegRight 0.44s infinite alternate; }
+.leg-8 { left: 21px; top: 25px; transform: rotate(-30deg); animation: spiderLegRight 0.50s infinite alternate; }
+
+@keyframes spiderLegLeft {
+    from { margin-left: 0; }
+    to { margin-left: -5px; }
+}
+
+@keyframes spiderLegRight {
+    from { margin-left: 0; }
+    to { margin-left: 5px; }
+}
+
+
+/* ========================================
+   SPIDEYWEB CANVAS ENGINE
+   ======================================== */
+
+.spidey-canvas {
+    position: relative;
+    isolation: isolate;
+}
+
+.spidey-physics-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.spidey-person-node {
+    z-index: 5 !important;
+}
+
+
+/* =========================================
+   VOID-X FINAL SPIDER ENGINE
+   Oude CSS-routes volledig uitschakelen.
+   JavaScript bestuurt de positie.
+   ========================================= */
+
+.spidey-spider {
+    animation: none !important;
+    offset-path: none !important;
+    offset-distance: 0 !important;
+    offset-rotate: 0deg !important;
+    font-size: 0 !important;
+}
+
+.spider-body,
+.spider-abdomen,
+.spider-thorax {
+    animation: none !important;
+}
+
+/* =====================================================
+   VOID-X SPIDEY - FINAL CLEAN SPIDER
+   Deze regels overschrijven alle oude spin-versies.
+   ===================================================== */
+
+/* De spin zelf: JavaScript bepaalt uitsluitend de positie */
+.spidey-spider {
+    position: absolute !important;
+    z-index: 50 !important;
+
+    width: 44px !important;
+    height: 44px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 0 !important;
+    line-height: 1 !important;
+
+    pointer-events: none !important;
+
+    animation: none !important;
+    offset-path: none !important;
+    offset-distance: 0 !important;
+    offset-rotate: 0deg !important;
+
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.65)) !important;
+    will-change: left, top, transform;
+}
+
+/* Oude CSS-spin volledig uitschakelen */
+.spidey-spider::before,
+.spidey-spider::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Het lichaam */
+.spidey-spider .spider-body {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+
+    width: 19px !important;
+    height: 28px !important;
+
+    transform: translate(-50%, -50%) !important;
+    animation: none !important;
+    z-index: 3 !important;
+}
+
+/* Achterlijf */
+.spidey-spider .spider-abdomen {
+    position: absolute !important;
+
+    width: 18px !important;
+    height: 20px !important;
+
+    left: 50% !important;
+    bottom: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    border-radius: 52% 52% 48% 48% !important;
+
+    background:
+        radial-gradient(
+            ellipse at 38% 28%,
+            #4b4b4b 0%,
+            #161616 22%,
+            #070707 65%,
+            #000000 100%
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.13) !important;
+    box-shadow:
+        inset -2px -3px 4px rgba(0,0,0,.8),
+        inset 2px 2px 3px rgba(255,255,255,.08) !important;
+
+    animation: none !important;
+}
+
+/* Kop en borststuk */
+.spidey-spider .spider-thorax {
+    position: absolute !important;
+
+    width: 12px !important;
+    height: 13px !important;
+
+    left: 50% !important;
+    top: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    border-radius: 50% !important;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #4a4a4a,
+            #111111 45%,
+            #030303 100%
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.12) !important;
+    animation: none !important;
+}
+
+/* Alle acht poten */
+.spidey-spider .spider-leg {
+    position: absolute !important;
+
+    width: 18px !important;
+    height: 2px !important;
+
+    background:
+        linear-gradient(
+            to right,
+            #090909,
+            #272727 55%,
+            #090909
+        ) !important;
+
+    border-radius: 50% !important;
+
+    transform-origin: 0 50% !important;
+    z-index: 1 !important;
+
+    animation: spiderWalkLeft .28s ease-in-out infinite alternate !important;
+}
+
+/* Linkerkant */
+.spidey-spider .leg-1 {
+    left: 18px !important;
+    top: 10px !important;
+    --leg-angle: 145deg;
+    animation-delay: 0s !important;
+}
+.spidey-spider .leg-2 {
+    left: 18px !important;
+    top: 15px !important;
+    --leg-angle: 165deg;
+    animation-delay: -.14s !important;
+}
+.spidey-spider .leg-3 {
+    left: 18px !important;
+    top: 21px !important;
+    --leg-angle: 195deg;
+    animation-delay: -.05s !important;
+}
+.spidey-spider .leg-4 {
+    left: 18px !important;
+    top: 26px !important;
+    --leg-angle: 215deg;
+    animation-delay: -.19s !important;
+}
+
+/* Rechterkant */
+.spidey-spider .leg-5 {
+    left: 25px !important;
+    top: 10px !important;
+    --leg-angle: 35deg;
+    animation-delay: -.12s !important;
+}
+.spidey-spider .leg-6 {
+    left: 25px !important;
+    top: 15px !important;
+    --leg-angle: 15deg;
+    animation-delay: -.02s !important;
+}
+.spidey-spider .leg-7 {
+    left: 25px !important;
+    top: 21px !important;
+    --leg-angle: -15deg;
+    animation-delay: -.16s !important;
+}
+.spidey-spider .leg-8 {
+    left: 25px !important;
+    top: 26px !important;
+    --leg-angle: -35deg;
+    animation-delay: -.07s !important;
+}
+
+/* Lopende beweging van de poten */
+@keyframes spiderWalkLeft {
+    from {
+        transform: rotate(var(--leg-angle)) translateX(0);
+    }
+    to {
+        transform: rotate(var(--leg-angle)) translateX(4px);
+    }
+}
+

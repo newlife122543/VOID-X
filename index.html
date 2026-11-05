@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID//X</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+
+    <aside id="sidebar" class="sidebar">
+        <div class="brand">
+            <div class="brand-mark">V//X</div>
+            <span class="brand-name">VOID//X</span>
+        </div>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-page="home">⌂ <span>Home</span></button>
+            <button class="nav-item" data-page="chat">◉ <span>Chat</span></button>
+            <button class="nav-item" data-page="localai">◈ <span>Local AI</span></button>
+            <button class="nav-item" data-page="scripter">⌘ <span>Scripter Tools</span></button>
+            <button class="nav-item" data-page="editor">✦ <span>V/F Editor</span></button>
+<button class="nav-item" data-page="games">◐ <span>Games</span></button>
+            <button class="nav-item" data-page="spideyweb">🕷 <span>SpideyWeb</span></button>
+            <button class="nav-item" data-page="notes">▤ <span>Notes</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="nav-item" data-page="settings">⚙ <span>Settings</span></button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <button id="sidebar-toggle" class="icon-button">☰</button>
+            <div class="system-status">
+                <span class="status-dot"></span>SYSTEM ONLINE
+            </div>
+        </header>
+
+        <section id="content" class="content"></section>
+    </main>
+
+</div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
+
+

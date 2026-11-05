@@ -1,0 +1,14 @@
+﻿# Grote lokale bestanden
+games/
+node_modules/
+release/
+
+# Backups
+*.backup
+*.voidx-backup
+main.js.before-updates.js
+
+# Tijdelijke bestanden
+*.log
+.DS_Store
+Thumbs.db
