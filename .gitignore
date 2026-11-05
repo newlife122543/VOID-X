@@ -12,3 +12,5 @@ main.js.before-updates.js
 *.log
 .DS_Store
 Thumbs.db
+
+main.js.spideyweb-backup
