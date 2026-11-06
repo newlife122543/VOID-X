@@ -1,0 +1,44 @@
+﻿{
+    "name":  "void-x",
+    "version":  "0.1.0",
+    "description":  "VOID//X Desktop Application",
+    "main":  "main.js",
+    "scripts":  {
+                    "start":  "electron .",
+                    "dist":  "electron-builder"
+                },
+    "devDependencies":  {
+                            "electron":  "^39.8.10",
+                            "electron-builder":  "^26.18.0"
+                        },
+    "dependencies":  {
+                         "electron-updater":  "^6.8.11"
+                     },
+    "build":  {
+                  "appId":  "com.voidx.desktop",
+                  "productName":  "VOID-X",
+                  "directories":  {
+                                      "output":  "release"
+                                  },
+                  "files":  [
+                                "**/*",
+                                "!node_modules/**",
+                                "!release/**",
+                                "!*.backup",
+                                "!main.js.spideyweb-backup"
+                            ],
+                  "win":  {
+                              "target":  "nsis"
+                          },
+                  "nsis":  {
+                               "oneClick":  false,
+                               "allowToChangeInstallationDirectory":  true
+                           },
+                  "extraResources":  [
+                                         {
+                                             "to":  "games",
+                                             "from":  "games"
+                                         }
+                                     ]
+              }
+}

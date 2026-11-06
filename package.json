@@ -34,6 +34,12 @@
                   "nsis":  {
                                "oneClick":  false,
                                "allowToChangeInstallationDirectory":  true
-                           }
+                           },
+                  "extraResources":  [
+                                         {
+                                             "to":  "games",
+                                             "from":  "games"
+                                         }
+                                     ]
               }
 }

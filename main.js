@@ -4,6 +4,14 @@ const http = require("http");
 const { spawn } = require("child_process");
 const fs = require("fs");
 
+
+function getGamesRoot() {
+    if (app.isPackaged) {
+        return path.join(process.resourcesPath, "games");
+    }
+
+    return path.join(__dirname, "games");
+}
 function createWindow() {
     const win = new BrowserWindow({
         width: 1450,
@@ -197,7 +205,7 @@ ipcMain.handle("voidx-chat", async (event, messages) => {
 
 ipcMain.handle("voidx-get-games", async () => {
     const fs = require("fs");
-    const gamesPath = path.join(__dirname, "games");
+    const gamesPath = getGamesRoot();
 
     if (!fs.existsSync(gamesPath)) {
         return [];
@@ -246,11 +254,11 @@ ipcMain.handle("voidx-launch-game", async (event, gameId) => {
     console.log("VOID//X GAME LAUNCH REQUEST:", gameId);
     const games = {
         "tka": {
-            path: path.join(__dirname, "games", "The-Killing-Antidote"),
+            path: path.join(getGamesRoot(), "The-Killing-Antidote"),
             exe: "TheKillingAntidote.exe"
         },
         "dawn-break": {
-            path: path.join(__dirname, "games", "Dawn-Break", "DawnBreak"),
+            path: path.join(getGamesRoot(), "Dawn-Break", "DawnBreak"),
             exe: "DawnBreak.exe"
         }
     };
@@ -301,6 +309,7 @@ app.whenReady().then(createWindow);
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") app.quit();
 });
+
 
 
 

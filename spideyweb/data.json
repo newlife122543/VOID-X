@@ -1,41 +1,4 @@
 {
-    "people": [
-        {
-            "id": "person-1793901413100",
-            "name": "s",
-            "notes": "",
-            "createdAt": "2026-11-05T17:56:53.100Z"
-        },
-        {
-            "id": "person-1793901419276",
-            "name": "d",
-            "notes": "",
-            "createdAt": "2026-11-05T17:56:59.276Z"
-        },
-        {
-            "id": "person-1793901428780",
-            "name": "a",
-            "notes": "",
-            "createdAt": "2026-11-05T17:57:08.780Z"
-        },
-        {
-            "id": "person-1793901431780",
-            "name": "w",
-            "notes": "",
-            "createdAt": "2026-11-05T17:57:11.780Z"
-        },
-        {
-            "id": "person-1793901435645",
-            "name": "s",
-            "notes": "",
-            "createdAt": "2026-11-05T17:57:15.645Z"
-        },
-        {
-            "id": "person-1793901440293",
-            "name": "d",
-            "notes": "",
-            "createdAt": "2026-11-05T17:57:20.293Z"
-        }
-    ],
+    "people": [],
     "connections": []
 }
